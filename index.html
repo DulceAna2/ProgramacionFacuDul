@@ -27,11 +27,11 @@
         //MUEVE LA PELOTA
         var canvas = document.getElementById("myCanvas");
         var ctx = canvas.getContext("2d"); /* creo el espacio para dibujar */
-        var x=canvas.width/2;
-        var y= canvas.height-30;
-        var dx=2;
-        var dy=-2;
-        
+        var x = canvas.width / 2;
+        var y = canvas.height - 30;
+        var dx = 2;
+        var dy = -2;
+
         ctx.beginPath();
         function drawBall() {
             ctx.beginPath();
@@ -43,12 +43,23 @@
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBall();
+            //REBOTA EN LAS PAREDES
+            var ballRadius = 10;//Detección de colisión simple
+            ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+
+            if (y + dy > canvas.height || y + dy < 0) {//Rebota para arriba y abajo
+                dy = -dy;
+            }
+            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { //Rebotando en la izquierda y derecha
+                dx = -dx;
+            }
+            if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+                dy = -dy;
+            }
             x += dx;
             y += dy;
         }
         setInterval(draw, 10);
-
-
     </script>
 </body>
 
