@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Gamedev Canvas Workshop</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        canvas {
+            /* creo el "espacio" en el que posterior mente voy a dibujar */
+            background: #eee;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+    <!-- creo la ""variable"" del espacio para poder modificarla y dibujar en ella-->
+
+    <script>
+        //MUEVE LA PELOTA
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d"); /* creo el espacio para dibujar */
+        var x=canvas.width/2;
+        var y= canvas.height-30;
+        var dx=2;
+        var dy=-2;
+        
+        ctx.beginPath();
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, 10, 0, Math.PI * 2);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBall();
+            x += dx;
+            y += dy;
+        }
+        setInterval(draw, 10);
+
+
+    </script>
+</body>
+
+</html>
