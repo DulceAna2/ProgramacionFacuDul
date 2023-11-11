@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+canvas {
+    /* creo el "espacio" en el que posterior mente voy a dibujar */
+    background: #eee;
+    display: block;
+    margin: 0 auto;
+}
