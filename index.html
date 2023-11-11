@@ -31,6 +31,49 @@
         var y = canvas.height - 30;
         var dx = 2;
         var dy = -2;
+        //Definir pala
+        var paddleHeight = 10; //altura
+        var paddleWidth = 75; //ancho
+        var paddleX = (canvas.width - paddleWidth) / 2; //posición en el eje X
+        //Dos variables para guardar la información sobre si se ha pulsado el botón izquierdo o el derecho.
+        var rightPressed = false;
+        var leftPressed = false;
+
+        //Dos funciones (event listenings) que responden a los eventos keydowny keyup(pulsar tecla, liberar tecla). se ejecute algún código para manejar la paleta cuando se pulsan los botones.
+        document.addEventListener("keydown", keyDownHandler, false); //Cuando keydownal ocurra, la función keyDownHandler()se ejecutará
+        document.addEventListener("keyup", keyUpHandler, false);//Cuando se liberará la tecla pulsada, se ejecutará la función keyUpHandler()
+
+        function keyDownHandler(e) {//e.keyCode nos va a decir qué tecla se ha pulsado
+            if (e.keyCode == 39) {//Si vale 39 es porque se ha pulsado la "flecha derecha"
+                rightPressed = true;
+            } else if (e.keyCode == 37) {//Si vale 37 es porque se ha pulsado la "flecha izquierda"
+                leftPressed = true; //cuando se pulsará la "flecha izquierda" pondremos leftPressed a true.
+            }
+        }
+
+        function keyUpHandler(e) {
+            if (e.keyCode == 39) {
+                rightPressed = false;
+            } else if (e.keyCode == 37) {
+                leftPressed = false; //Cuando se liberará la "flecha izquierda" pondremos leftPressed a false.
+            }
+        }
+
+        function keyDownHandler(e) {
+            if (e.keyCode == 39) {
+                rightPressed = true;
+            } else if (e.keyCode == 37) {
+                leftPressed = true;
+            }
+        }
+
+        function keyUpHandler(e) {
+            if (e.keyCode == 39) {
+                rightPressed = false;
+            } else if (e.keyCode == 37) {
+                leftPressed = false;
+            }
+        }
 
         ctx.beginPath();
         function drawBall() {
@@ -40,34 +83,40 @@
             ctx.fill();
             ctx.closePath();
         }
+
+        //CONTROL DE LA PALA Y EL TECLADO
+        function drawPaddle() {
+            ctx.beginPath();
+            ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             drawBall();
+            drawPaddle();
             //REBOTA EN LAS PAREDES
             var ballRadius = 10;//Detección de colisión simple
             ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-
-            if (y + dy > canvas.height || y + dy < 0) {//Rebota para arriba y abajo
-                dy = -dy;
-            }
-            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) { //Rebotando en la izquierda y derecha
+            if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {//Rebotando en la izquierda y derecha
                 dx = -dx;
             }
-            if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+            if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {//Rebota para arriba y abajo
                 dy = -dy;
+            }
+
+            if (rightPressed && paddleX < canvas.width - paddleWidth) {
+                paddleX += 7;
+            }
+            else if (leftPressed && paddleX > 0) {
+                paddleX -= 7;
             }
             x += dx;
             y += dy;
         }
 
-
-//CONTROL DE LA PALA Y EL TECLADO
-        //Definir pala
-        var paddleHeight = 10; //altura
-var paddleWidth = 75; //ancho
-var paddleX = (canvas.width - paddleWidth) / 2; //posición en el eje X
-
-        
         setInterval(draw, 10);
     </script>
 </body>
