@@ -1,6 +1,6 @@
 # ProgramacionFacuDul
 
-Trabajo practivo evaluativo
+Trabajo practico evaluativo
 
 Programacion CET30 4º1 
 
@@ -9,5 +9,3 @@ Programacion CET30 4º1
 [Paleta de colores](https://github.com/catppuccin/catppuccin)
 
 [Documentacion del juego](https://developer.mozilla.org/es/docs/Games/Tutorials/2D_Breakout_game_pure_JavaScript)
-
-
