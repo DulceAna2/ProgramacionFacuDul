@@ -4,7 +4,7 @@ Trabajo practivo evaluativo
 
 Programacion CET30 4º1 
 
-![imagen](https://github.com/DulceAna2/ProgramacionFacuDul/assets/121110001/527dfd1d-2073-42a6-ba72-d2778b604b5c)
+![imagen](https://github.com/DulceAna2/ProgramacionFacuDul/assets/121110001/d058a863-ddc0-4bf6-b448-19889bf721a9)
 
 [Paleta de colores](https://github.com/catppuccin/catppuccin)
 
