@@ -1,11 +1,14 @@
 * {
     padding: 0;
     margin: 0;
+    background-color: #11111b;
 }
 
 canvas {
     /* creo el "espacio" en el que posterior mente voy a dibujar */
-    background: #eee;
+    background: #11111b;
     display: block;
     margin: 0 auto;
+    border: solid #313244 3px;
+    border-radius: 15px;
 }
